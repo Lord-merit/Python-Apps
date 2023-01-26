@@ -1,20 +1,5 @@
-#!/Users/Utsav/downloads/udemy python
+"""  BlackJack Game """
 
-# For using the same code in either Python 2 or 3
-# from __future__ import print_function
-
-""" milestone_project_1.py: BlackJack Game """
-
-__author__ = "Utsav Shah"
-__copyright__ = "Copyright 2017, The Austin Side Project"
-__credits__ = ["Hustle"]
-__license__ = "UTS"
-__version__ = "1.1.0"
-__maintainer__ = "Utsav Shah"
-__email__ = "utsavshah507@gmail.com"
-__status__ = "Productive"
-
-## Milestone Project 2
 
 # Importing libraries -- used for shuffling cards
 import random
@@ -25,7 +10,7 @@ playing = False
 # Amount for buy-in
 chip_pool = 100
 # raw_input('Enter the amount for buy-in: ')
-print 'Your buy-in amount is: ',chip_pool
+print ('Your buy-in amount is: ',chip_pool)
 
 bet = 1
 
@@ -146,19 +131,19 @@ def make_bet():
 	global bet
 	bet = 0
 
-	print 'What amount of chips would you like to bet? (Please enter whole integer) '
+	print ('What amount of chips would you like to bet? (Please enter whole integer) ')
 
 	# While loop to keep asking for the bet
 	while bet == 0:
 		# Using bet_comp as a checker
-		bet_comp = raw_input()
+		bet_comp = input()
 		bet_comp = int(bet_comp)
 
 		# Check to make sure the bet is within the remaining amount of chips left
 		if bet_comp >= 1 and bet_comp <= chip_pool:
 			bet = bet_comp
 		else:
-			print "Invalid bet, you only have " + str(chip_pool) + " remaining"
+			print ("Invalid bet, you only have " + str(chip_pool) + " remaining")
 
 def deal_cards():
 	'''This function deals out cards and sets up round'''
@@ -186,7 +171,7 @@ def deal_cards():
 	result = "Hit or Stand? Press h for hit or s for stand: "
 
 	if playing == True:
-		print 'Fold, Sorry'
+		print ('Fold, Sorry')
 		chip_pool -= bet
 
 	# Set up to know currently playing hand
@@ -206,7 +191,7 @@ def hit():
 		if player_hand.calc_val() <= 21:
 			player_hand.card_add(deck.deal())
 
-		print "Player hand is %s" %player_hand
+		print ("Player hand is %s" %player_hand)
 
 		if player_hand.calc_val() > 21:
 			result = 'Busted!' + restart_phrase
@@ -269,28 +254,28 @@ def game_step():
 	'''Function to print game step/status on output'''
 
 	# Display Player Hand
-	print ""
-	print ('Player Hand is: '),player_hand.draw(hidden = False)
+	print ("")
+	print ('Player Hand is: ',player_hand.draw(hidden = False))
 
-	print ''
-	print 'Player hand total is: ' +str(player_hand.calc_val())
+	print ('')
+	print ('Player hand total is: ' +str(player_hand.calc_val()))
 
 	# Display Dealer Hand
-	print ''
-	print('Dealer Hand is: '), dealer_hand.draw(hidden = True)
+	print ('')
+	print('Dealer Hand is: ', dealer_hand.draw(hidden = True))
 
 	# If game round is over
 	if playing == False:
-		print " --- for a total of " + str(dealer_hand.calc_val())
-		print "Chip Total: " +str(chip_pool)
+		print (" --- for a total of " + str(dealer_hand.calc_val()))
+		print ("Chip Total: " +str(chip_pool))
 
 	# Otherwise, don't know the second card yet
 	else:
-		print " with another card hidden upside down"
+		print (" with another card hidden upside down")
 
 	# Print result of hit or stand
-	print ''
-	print result
+	print ('')
+	print (result)
 
 	player_input()
 
@@ -298,7 +283,7 @@ def game_step():
 # Function to exit the game
 
 def game_exit():
-	print 'Thanks for playing!'
+	print ('Thanks for playing!')
 	exit()
 
 # Function to read user input
@@ -306,7 +291,7 @@ def game_exit():
 def player_input():
 	'''Read user input, lower case it jsuts to be safe'''
 
-	plin = raw_input().lower()
+	plin = input().lower()
 
 	if plin == 'h':
 		hit()
@@ -317,7 +302,7 @@ def player_input():
 	elif plin == 'q':
 		game_exit()
 	else:
-		print "Invalid Input. Enter h, s, d, or q: "
+		print ("Invalid Input. Enter h, s, d, or q: ")
 		player_input()
 
 # Intro to game
@@ -326,8 +311,8 @@ def intro():
 	statement = '''Welcome to BlackJack! Get as close to 21 as you can without getting over! 
 Dealer hits until she reaches 17. Aces count as 1 or 11. Card output goes a letter followed by a number of face notation. '''
 
-	print statement
-	print ''
+	print (statement)
+	print ('')
 
 # Playing the Game
 
@@ -341,9 +326,9 @@ deck = Deck()
 deck.shuffle()
 
 # Create player and dealer hands
-print ''
+print ('')
 player_hand = Hand()
-print ''
+print ('')
 deal_hand = Hand()
 
 # Print the intro
